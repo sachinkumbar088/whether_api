@@ -22,7 +22,6 @@ router.get("/:location_id", async (req, res) => {
 
     // Use latitude and longitude from the retrieved location to fetch weather data
     const { latitude, longitude } = location;
-    console.log(latitude, "latitude", longitude);
 
     // Fetch weather data using latitude and longitude
     const weatherData = await fetchWeatherData(latitude, longitude);
