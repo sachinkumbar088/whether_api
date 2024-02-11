@@ -8,6 +8,7 @@ const weatherController = require("./src/controllers/weatherController");
 const errorMiddleware = require("./src/middleware/errorMiddleware");
 const logger = require("./src/utils/logger");
 const mongoose = require("mongoose");
+const limiter = require("./src/middleware/rateLimitMiddleware");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -17,6 +18,8 @@ mongoose.connect("mongodb://localhost:27017/mydatabase");
 
 // Event handlers for connection
 const db = mongoose.connection;
+app.use(limiter);
+
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 db.once("open", () => {
   console.log("Connected to MongoDB");

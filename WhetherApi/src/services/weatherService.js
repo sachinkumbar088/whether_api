@@ -35,7 +35,7 @@ const fetchWeatherData = async (latitude, longitude, startDate, endDate) => {
         `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${WHETHER_API_KEY}`
       );
       const weatherData = response.data;
-      cache.set(cacheKey, weatherData, 300); // Cache for 5 minutes
+      // cache.set(cacheKey, weatherData, 300); // Cache for 5 minutes
       return weatherData;
     } catch (error) {
       throw new Error("Failed to fetch current weather data");
